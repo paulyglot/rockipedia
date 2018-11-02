@@ -4,6 +4,7 @@
   "description": "wiki app",
   "main": "index.js",
   "scripts": {
+    "start": "node src/server.js",
     "test": "export NODE_ENV=test && jasmine"
   },
   "repository": {
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/paulyglot/blocipedia-node/issues"
   },
-  "homepage": "https://github.com/paulyglot/blocipedia-node#readme"
+  "homepage": "https://github.com/paulyglot/blocipedia-node#readme",
+  "devDependencies": {
+    "jasmine": "^3.0.0",
+    "request": "^2.83.0"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
