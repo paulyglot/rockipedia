@@ -1,0 +1,19 @@
+{
+  "name": "blocipedia-node",
+  "version": "1.0.0",
+  "description": "wiki app",
+  "main": "index.js",
+  "scripts": {
+    "test": "export NODE_ENV=test && jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulyglot/blocipedia-node.git"
+  },
+  "author": "Paul Brower",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulyglot/blocipedia-node/issues"
+  },
+  "homepage": "https://github.com/paulyglot/blocipedia-node#readme"
+}
