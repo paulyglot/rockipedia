@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../static/partials/head.ejs %>
+</head>
+<body>
+    <% include ../static/partials/navbar.ejs %>
+    <main class="container">
+        <% include ../static/partials/messages.ejs %>
+        <h1>Hello and welcome
+            <%= user.name %>
+        </h1>
+        <h3>Your account is currently set to:
+            <%= user.role %>
+        </h3>
+        <a href="/users/<%= user.id %>/upgrade" class="btn btn-warning">Upgrade to Premium</a>
+        <p>When upgrading to Premium you gain read and write access to private wikis.</p>
+        <a href="/users/<%= user.id %>/downgrade" class="btn btn-warning">Downgrade to Standard</a>
+        <p>With a Standard account you only have the ability to create public wikis.</p>
+    </main>
+    <% include ../static/partials/baseScripts.ejs %>
+</body>
+</html>
