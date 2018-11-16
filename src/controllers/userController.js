@@ -1,4 +1,5 @@
 const userQueries = require("../db/queries.users.js");
+const wikiQueries = require("../db/queries.wikis.js");
 const passport = require("passport");
 const User = require("../db/models/").User;
 const stripe = require("stripe")("sk_test_d5TlBkmEL0dgFBMeK0yx14TT");
@@ -83,10 +84,10 @@ module.exports = {
         .then((user) => {
             if(user){
                 const charge = stripe.charges.create({
-                    amount: 999,
+                    amount: 1500,
                     currency: 'usd',
                     description: 'Upgrade to premium',
-                    source: token,
+                    source: token
                 })
                 .then((result) => {
                     if(result){
@@ -116,18 +117,17 @@ module.exports = {
         });
     },
 
-    downgrade(req, res, next){
-        User.findOne({
-            where: {id: req.params.id}
-        })
-        .then((user) => {
-            if(user){
-                userQueries.toggleRole(user);
-                req.flash("notice", "Your downgrade was successful.");
-                res.redirect("/wikis");
+    downgrade(req, res, next) {
+        userQueries.getUser(req.params.id, (err, user) => {
+            if (err || user === undefined) {
+                res.redirect("/users/show", {
+                    user
+                });
             } else {
-                req.flash("notice", "Downgrade unsuccessful.");
-                res.redirect("users/show", {user});
+                wikiQueries.togglePrivacy(user);
+                userQueries.toggleRole(user);
+                req.flash("notice", "Downgrade successful!");
+                res.redirect("/");
             }
         })
     }

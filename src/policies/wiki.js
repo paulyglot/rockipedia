@@ -3,7 +3,7 @@ const ApplicationPolicy = require("./application");
 module.exports = class WikiPolicy extends ApplicationPolicy {
     
     new() {
-        return this.isStandard() || this._isPremium() || this_isAdmin();
+        return this.isStandard() || this._isPremium() || this._isAdmin();
     }
     
     create() {
@@ -11,14 +11,10 @@ module.exports = class WikiPolicy extends ApplicationPolicy {
     }
     
     edit() {
-        return this._isAdmin() || this._isPremium() || this._isStandard();
+        return this.user != null;
     }
 
     update() {
         return this.edit();
-    }
-
-    destroy() {
-        return this._isAdmin();
     }
 }

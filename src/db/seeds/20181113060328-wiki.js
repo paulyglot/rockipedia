@@ -7,7 +7,8 @@
     body: faker.hacker.phrase(),
     private: "false",
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
+    userId: 0
   });
 }
  module.exports = {

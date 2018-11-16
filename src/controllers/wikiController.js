@@ -1,5 +1,5 @@
 const wikiQueries = require("../db/queries.wikis.js");
-const Authorizer = require("../policies/wiki");
+const Authorizer = require("../policies/application");
 
 module.exports = {
     index(req, res, next) {
@@ -31,7 +31,8 @@ module.exports = {
             let newWiki = {
                 title: req.body.title,
                 body: req.body.body,
-                private: req.body.private
+                private: req.body.private,
+                userId: req.user.id
             };
             wikiQueries.addWiki(newWiki, (err, wiki) => {
                 if (err) {

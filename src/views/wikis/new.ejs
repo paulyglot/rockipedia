@@ -6,19 +6,26 @@
 <body>
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
-        <h1>New Wiki</h1>
-        <form action="/wikis/create" method="post">
-            <div class="form-group">
-                <label for="title">Wiki title</label>
-                <input type="text" class="form-control" name="title" aria-describedby="titleHelp" placeholder="Enter Title">
-            </div>
-            <div class="form-group">
-                <label for="body">Body</label>
-                <textarea rows="4" class="form-control" name="body" placeholder="Enter text"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <% include ../static/partials/messages.ejs %>
+        <h1>
+            <%= wiki.title %>
+        </h1>
+            <% if(wiki.private) { %>
+        <p>This wiki is private. Only Premium members may edit private wikis.</p>
+            <% if(currentUser.isPremium() || currentUser.isAdmin()) { %>
+        <a href="/wikis/<%= wiki.id %>/edit" class="btn btn-warning">Edit wiki</a>
+            <% } %>
+            <% } else { %>
+        <a href="/wikis/<%= wiki.id %>/edit" class="btn btn-warning">Edit wiki</a>
+            <% } %>
+            <% if(currentUser.isAdmin()) { %>
+        <form style="display:initial" action="/wikis/<%= wiki.id %>/destroy" method="post">
+            <button type="submit" class="btn btn-danger">Delete wiki</button>
         </form>
+            <% } %>
+        <p>
+            <%= wiki.body %>
+        </p>
     </main>
     <% include ../static/partials/baseScripts.ejs %>
 </body>
-</html>

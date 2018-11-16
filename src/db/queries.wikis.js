@@ -1,5 +1,5 @@
 const Wiki = require("./models").Wiki;
-const Authorizer = require("../policies/wiki");
+const Authorizer = require("../policies/application");
 
 module.exports = {
     getAllWikis(callback) {
@@ -16,7 +16,8 @@ module.exports = {
         return Wiki.create({
             title: newWiki.title,
             body: newWiki.body,
-            private: newWiki.private
+            private: newWiki.private,
+            userId: newWiki.userId
         })
         .then((wiki) => {
             callback(null, wiki);
@@ -78,5 +79,18 @@ module.exports = {
                 callback("Forbidden");
             }
         });
+    },
+
+    togglePrivacy(user){
+        Wiki.findAll({
+            where: { userId: user.id}
+        })
+        .then((wikis) => {
+            wikis.forEach((wiki) => {
+                wiki.update({
+                    private: false
+                })
+            })
+        })
     }
 }
