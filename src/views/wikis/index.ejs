@@ -7,7 +7,9 @@
     <main class="container">
         <% include ../static/partials/navbar.ejs %>
         <h1>Wikis</h1>
-<a href="/wikis/new" class="btn btn-success">New Wiki</a>
+        <% if(currentUser) { %>
+            <a href="/wikis/new" class="btn btn-success">New Wiki</a>
+        <% } %>
         <ul class="list-group">
             <% wikis.forEach((wiki) => { %>          
                 <% if(wiki.private) { %>
@@ -15,14 +17,14 @@
                         <% if(currentUser.isPremium() || currentUser.isAdmin()) { %>
                             <li class="list-group-item">
                                 <a href="/wikis/<%= wiki.id %>">
-                                    <%= wiki.title %> </a>
+                                    <%- wiki.title %> </a>
                             </li>
                         <% } %>
                     <% } %>
                 <% } else { %>
                     <li class="list-group-item">
                         <a href="/wikis/<%= wiki.id %>">
-                            <%= wiki.title %> </a>
+                            <%- wiki.title %> </a>
                     </li>
                 <% } %>
             <% }) %>

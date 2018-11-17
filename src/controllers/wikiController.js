@@ -1,5 +1,6 @@
 const wikiQueries = require("../db/queries.wikis.js");
 const Authorizer = require("../policies/application");
+const markdown = require( "markdown" ).markdown;
 
 module.exports = {
     index(req, res, next) {
@@ -8,6 +9,10 @@ module.exports = {
                 console.log(err);
                 res.redirect(500, "static/index");
             } else {
+                wikis.forEach((wiki) => {
+                    wiki.title = markdown.toHTML(wiki.title);
+                    wiki.body = markdown.toHTML(wiki.body);
+                })
                 res.render("wikis/index", {
                     wikis
                 });
@@ -53,6 +58,8 @@ module.exports = {
             if(err || wiki == null){
                 res.redirect(404, "/");
             } else {
+                wiki.title = markdown.toHTML(wiki.title);
+                wiki.body = markdown.toHTML(wiki.body);
                 res.render("wikis/show", {wiki});
             }
         });

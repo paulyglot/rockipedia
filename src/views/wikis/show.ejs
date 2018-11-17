@@ -7,7 +7,7 @@
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
         <h1>
-            <%= wiki.title %>
+            <%- wiki.title %>
         </h1>
         <% if(currentUser) { %>
     <a href="/wikis/<%= wiki.id %>/edit" class="btn btn-warning">Edit</a>
@@ -19,7 +19,7 @@
     </form>
     <% } %>
         <p>
-            <%= wiki.body %>
+            <%- wiki.body %>
         </p>
     </main>
     <% include ../static/partials/baseScripts.ejs %>
