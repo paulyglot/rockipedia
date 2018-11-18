@@ -11,7 +11,6 @@
             <%- wiki.title %>
         </h1>
         <% if(wiki.private) { %>
-        <p>Sorry this wiki is private! Sign up for a Premium membersip to view, edit and create private wikis.</p>
         <% if(currentUser.isPremium() || currentUser.isAdmin()) { %>
         <a href="/wikis/<%= wiki.id %>/edit" class="btn btn-warning">Edit Wiki</a>
         <% } %>

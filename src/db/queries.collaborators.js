@@ -36,9 +36,11 @@ module.exports = {
                                 wikiId: req.params.wikiId
                             })
                             .then((collaborator) => {
+                                console.log("collaborator created");
                                 callback(null, collaborator);
                             })
                             .catch((err) => {
+                                console.log("ERROR:", err);
                                 callback("Can't find it!")
                             })
                     })
