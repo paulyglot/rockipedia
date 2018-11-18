@@ -1,46 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <% include ./partials/head.ejs %>
-  </head>
-  <body>
-
-      <!-- Navigation -->
-      <% include ./partials/navbar.ejs %>
-
-      <!-- Page Content -->
-      <main class="container">
-
-        <!-- Jumbotron Header -->
+</head>
+<body>
+    <% include ./partials/navbar.ejs %>
+    <main class="container">
         <header class="jumbotron my-4">
-          <h1 class="display-3">Welcome to Blocipedia</h1>
-          <p class="lead">A global application for users to create and edit wikis</p>
-          <a href="/users/signup" class="btn btn-primary btn-lg">Sign up</a>
+            <h1 class="display-3">Welcome to Blocipedia</h1>
+            <p class="lead">A global application for users to create and edit wikis</p>
         </header>
-
-        <!-- Page Features -->
         <section class="row text-center">
-
-          <section class="col-lg-4">
-            <h4 class="card-title">Create</h4>
-            <p class="card-text">Create new wikis covering any topic</p>
-          </section>
-
-          <section class="col-lg-4">
-            <h4 class="card-title">Edit</h4>
-            <p class="card-text">Edit your fellow nerd's wiki if it's not up to par</p>
-          </section>
-
-          <section class="col-lg-4">
-            <h4 class="card-title">Moderate</h4>
-            <p class="card-text">Our wiki site is in your hands, you have control over what stays and what goes</p>
-          </section>
-
+            <section class="col-lg-4">
+                <h4 class="card-title">Create Wikis</h4>
+                <p class="card-text">Create Wikis to share ideas and knowledge.</p>
+                <a href="/users/sign_up" class="btn btn-primary btn-lg">Sign Up</a>
+            </section>
+            <section class="col-lg-4">
+                <h4 class="card-title">Get Collaborative</h4>
+                <p class="card-text">With friends, family, teammates, even your dog (if your dog can type).</p>
+            <% if(currentUser) { %>
+            <a href="/users/<%= currentUser.id %>/collaborations" class="btn btn-primary btn-lg">See Collaborations</a>
+            <% } %>
+            </section>
+            <section class="col-lg-4">
+                <h4 class="card-title">Create Private Wikis</h4>
+                <p class="card-text">Join the Premium community to share and create private wikis.</p>
+        <% if(currentUser && currentUser.role != "standard") { %>
+        <a href="/wikis/private" class="btn btn-primary btn-lg">See Private Wikis</a>
+        <% } %>
+        <% if(currentUser && currentUser.role == "standard") { %>
+        <a href="/users/<%= currentUser.id %>" class="btn btn-primary btn-lg">Upgrade to Premium</a>
+        <% } %>
+            </section>
         </section>
-        <!-- /.row -->
-
-      </main>
-      <!-- /.container -->
-      <% include ./partials/baseScripts.ejs %>
-    </body>
+    </main>
+    <% include ./partials/baseScripts.ejs %>
+</body>
 </html>

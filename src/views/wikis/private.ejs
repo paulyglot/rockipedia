@@ -7,24 +7,22 @@
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
         <% include ../static/partials/messages.ejs %>
-        <h1>Wikis</h1>
-        <% if(!currentUser) { %>
-        <small>Please sign up or sign in to create your own wiki topic. </small>
+        <h1>Private Wikis</h1>
+        <% if(currentUser && currentUser.role !== "standard") { %>
+        <a href="/wikis/new" class="btn btn-success">Create Private Wiki</a>
         <% } %>
-        <% if(currentUser) { %>
-        <p>Want to add a wiki?</p>
-        <a href="/wikis/new" class="btn btn-success">New Wiki</a>
-        <% } %>
+        <hr>
         <ul class="list-group">
             <% wikis.forEach((wiki) => { %>
-            <% if(wiki.private === false) { %>
+            <% if(wiki.private === true && wiki.userId === currentUser.id) { %>
             <li class="list-group-item">
                 <a href="/wikis/<%= wiki.id %>">
-                    <%- wiki.title %> </a>
+                    <%= wiki.title %> </a>
             </li>
             <% } %>
             <% }) %>
         </ul>
     </main>
+    <% include ../static/partials/baseScripts.ejs %>
 </body>
 </html>

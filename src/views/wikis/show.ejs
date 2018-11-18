@@ -6,22 +6,29 @@
 <body>
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
+        <% include ../static/partials/messages.ejs %>
         <h1>
             <%- wiki.title %>
         </h1>
-        <% if(currentUser) { %>
-    <a href="/wikis/<%= wiki.id %>/edit" class="btn btn-warning">Edit</a>
-    <% } %>
-        
-    <% if(currentUser.isAdmin()) { %>
-    <form style="display:initial" action="/wikis/<%= wiki.id %>/destroy" method="post">
-        <button type="submit" class="btn btn-danger">Delete Wiki</button>
-    </form>
-    <% } %>
+        <% if(wiki.private) { %>
+        <p>Sorry this wiki is private! Sign up for a Premium membersip to view, edit and create private wikis.</p>
+        <% if(currentUser.isPremium() || currentUser.isAdmin()) { %>
+        <a href="/wikis/<%= wiki.id %>/edit" class="btn btn-warning">Edit Wiki</a>
+        <% } %>
+        <% } else { %>
+        <a href="/wikis/<%= wiki.id %>/edit" class="btn btn-warning">Edit Wiki</a>
+        <% } %>
+        <% if(currentUser.isAdmin()) { %>
+        <form style="display:initial" action="/wikis/<%= wiki.id %>/destroy" method="post">
+            <button type="submit" class="btn btn-danger">Delete wiki</button>
+        </form>
+        <% } %>
+        <% if(wiki.private) { %>
+            <a href="/wikis/<%= wiki.id %>/collaborators" class="btn btn-info">Edit Collaborators</a>
+        <% } %>
         <p>
             <%- wiki.body %>
         </p>
     </main>
     <% include ../static/partials/baseScripts.ejs %>
 </body>
-</html>
