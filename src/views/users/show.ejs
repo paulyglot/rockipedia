@@ -21,7 +21,7 @@
         </h4>
         <hr>
         <% if(currentUser && currentUser.role == "standard") { %>
-        <h2>Join Blocipedia as a premium member.</h2>
+        <h2>Join Rockipedia as a premium member.</h2>
         <p>Create private wikis and collaborate with other premium members.<p>
         <form action="/users/<%=currentUser.id%>/upgrade" method="POST">
 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_fW76ZgiGxe40bb71ZXlUuOmr"
@@ -32,7 +32,7 @@
         <% } else { %>
         <% if(currentUser.role == "premium"); { %>
         <h2>Need to Downgrade?</h2>
-        <p> We're hate to see you go!</p>
+        <p> We'd hate to see you go!</p>
         <form action="/users/<%=currentUser.id%>/downgrade" method="POST">
             <button type="submit" class="btn btn-danger">Downgrade your membership</button>
         </form>

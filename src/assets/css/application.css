@@ -1,3 +1,24 @@
 body {
     padding-top: 54px;
   }
+
+.jumbotron my-4{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.display-3 {
+  text-align: center;
+}
+
+.lead {
+  text-align: center;
+}
+
+.card-title {
+  padding: 1%;
+}
+
+.list-group{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}

@@ -3,17 +3,11 @@
 <head>
     <% include ../static/partials/head.ejs %>
 </head>
-<body>
+<body background="https://images.pexels.com/photos/746421/pexels-photo-746421.jpeg?cs=srgb&dl=cliffs-climbing-clouds-746421.jpg&fm=jpg">
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
         <% include ../static/partials/messages.ejs %>
-        <h1>Wikis</h1>
         <% if(!currentUser) { %>
-        <small>Please sign up or sign in to create your own wiki topic. </small>
-        <% } %>
-        <% if(currentUser) { %>
-        <p>Want to add a wiki?</p>
-        <a href="/wikis/new" class="btn btn-success">New Wiki</a>
         <% } %>
         <ul class="list-group">
             <% wikis.forEach((wiki) => { %>
@@ -25,6 +19,10 @@
             <% } %>
             <% }) %>
         </ul>
+        <small>Please sign up or sign in to create your own wiki topic. </small>
+        <% if(currentUser) { %>
+            <a href="/wikis/new" class="btn btn-success">add new wiki</a>
+            <% } %>
     </main>
 </body>
 </html>

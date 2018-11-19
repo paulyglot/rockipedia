@@ -3,34 +3,36 @@
 <head>
     <% include ./partials/head.ejs %>
 </head>
-<body>
+<body background="https://images.pexels.com/photos/746421/pexels-photo-746421.jpeg?cs=srgb&dl=cliffs-climbing-clouds-746421.jpg&fm=jpg">
     <% include ./partials/navbar.ejs %>
     <main class="container">
-        <header class="jumbotron my-4">
-            <h1 class="display-3">Welcome to Blocipedia</h1>
-            <p class="lead">A global application for users to create and edit wikis</p>
+        <header class="jumbotron my-5">
+            <h1 class="display-3">Welcome to Rockipedia</h1>
+            <p class="lead">A global application for rock climbers to create and edit climbing wikis</p>
         </header>
         <section class="row text-center">
             <section class="col-lg-4">
                 <h4 class="card-title">Create Wikis</h4>
-                <p class="card-text">Create Wikis to share ideas and knowledge.</p>
-                <a href="/users/sign_up" class="btn btn-primary btn-lg">Sign Up</a>
+                <p class="card-text">Create climbing wikis for local beta</p>
+                <% if(currentUser && currentUser.role == "standard" || currentUser && currentUser.role == "premium") { %>
+                <a href="/wikis" class="btn btn-primary">See Public Wikis</a>
+                <% } %>
             </section>
             <section class="col-lg-4">
                 <h4 class="card-title">Get Collaborative</h4>
-                <p class="card-text">With friends, family, teammates, even your dog (if your dog can type).</p>
+                <p class="card-text">With all friends of any climbing skill level</p>
             <% if(currentUser) { %>
-            <a href="/users/<%= currentUser.id %>/collaborations" class="btn btn-primary btn-lg">See Collaborations</a>
+            <a href="/users/<%= currentUser.id %>/collaborations" class="btn btn-primary">See Collaborations</a>
             <% } %>
             </section>
             <section class="col-lg-4">
                 <h4 class="card-title">Create Private Wikis</h4>
-                <p class="card-text">Join the Premium community to share and create private wikis.</p>
+                <p class="card-text">Go Premium to edit private wikis</p>
         <% if(currentUser && currentUser.role != "standard") { %>
-        <a href="/wikis/private" class="btn btn-primary btn-lg">See Private Wikis</a>
+        <a href="/wikis/private" class="btn btn-primary">See Private Wikis</a>
         <% } %>
         <% if(currentUser && currentUser.role == "standard") { %>
-        <a href="/users/<%= currentUser.id %>" class="btn btn-primary btn-lg">Upgrade to Premium</a>
+        <a href="/users/<%= currentUser.id %>" class="btn btn-primary">Upgrade to Premium</a>
         <% } %>
             </section>
         </section>
