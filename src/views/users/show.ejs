@@ -16,8 +16,8 @@
             <%= `Your current role: ${currentUser.role}` %>
         </h5>
         <% if(currentUser && currentUser.role == "standard") { %>
-        <h2>Join Rockipedia as a premium member.</h2>
-        <p>Create private wikis and collaborate with other premium members.<p>
+        <h3>Join Rockipedia as a premium member</h3>
+        <p>Create private wikis and collaborate with other premium members<p>
         <form action="/users/<%=currentUser.id%>/upgrade" method="POST">
 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_fW76ZgiGxe40bb71ZXlUuOmr"
                 data-amount="1500" data-name="Stripe.com" data-description="Example Premium Membership Charge"

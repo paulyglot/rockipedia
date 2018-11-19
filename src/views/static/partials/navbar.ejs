@@ -5,19 +5,19 @@
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-            <% if(currentUser && currentUser.role != "standard") { %>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <% if(currentUser && currentUser.role != "standard") { %>
                 <li class="nav-item">
-                <a class="nav-link" href="/wikis/private">Private </a>
+                    <a class="nav-link" href="/wikis/private">Private </a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="/users/<%= currentUser.id %>/collaborations">Shared</a>
                 </li>
             <% }%>
             <% if(currentUser) { %>
                 <li class="nav-item">
-                        <a class="nav-link" href="/wikis">Public</a>
-                        </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users/<%= currentUser.id %>/collaborations">Shared</a>
+                    <a class="nav-link" href="/wikis">Public</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/users/<%= currentUser.id %>">Profile</a>
