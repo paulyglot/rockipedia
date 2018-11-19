@@ -1,5 +1,6 @@
 body {
     padding-top: 54px;
+    background-image: url("https://images.pexels.com/photos/746421/pexels-photo-746421.jpeg?cs=srgb&dl=cliffs-climbing-clouds-746421.jpg&fm=jpg");
   }
 
 .jumbotron my-4{
@@ -19,6 +20,20 @@ body {
 }
 
 .list-group{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.profile-header{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.profile-header-2{
+  margin-bottom: 5%;
+}
+
+.downgrade {
   margin-top: 5%;
   margin-bottom: 5%;
 }

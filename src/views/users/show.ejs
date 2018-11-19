@@ -7,19 +7,15 @@
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
         <% include ../static/partials/messages.ejs %>
-        <h1>
+        <h1 class="profile-header">
             Hello <%= `${currentUser.name}!` %>
         </h1>
-        <h3>
+        <h5>
             <%= `Your email: ${currentUser.email}` %>
-        </h3>
-        <h3>
+        </h5>
+        <h5 class="profile-header-2">
             <%= `Your current role: ${currentUser.role}` %>
-        </h3>
-        <h4>
-            <%= `Profile created at ${currentUser.createdAt}`%>
-        </h4>
-        <hr>
+        </h5>
         <% if(currentUser && currentUser.role == "standard") { %>
         <h2>Join Rockipedia as a premium member.</h2>
         <p>Create private wikis and collaborate with other premium members.<p>
@@ -31,8 +27,7 @@
         </form>
         <% } else { %>
         <% if(currentUser.role == "premium"); { %>
-        <h2>Need to Downgrade?</h2>
-        <p> We'd hate to see you go!</p>
+        <h2 class="downgrade">Need to Downgrade?</h2>
         <form action="/users/<%=currentUser.id%>/downgrade" method="POST">
             <button type="submit" class="btn btn-danger">Downgrade your membership</button>
         </form>

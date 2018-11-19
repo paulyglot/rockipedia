@@ -3,15 +3,10 @@
 <head>
     <% include ../static/partials/head.ejs %>
 </head>
-<body background="https://images.pexels.com/photos/746421/pexels-photo-746421.jpeg?cs=srgb&dl=cliffs-climbing-clouds-746421.jpg&fm=jpg">
+<body>
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
         <% include ../static/partials/messages.ejs %>
-        <h1>Private Wikis</h1>
-        <% if(currentUser && currentUser.role !== "standard") { %>
-        <a href="/wikis/new" class="btn btn-success">Create Private Wiki</a>
-        <% } %>
-        <hr>
         <ul class="list-group">
             <% wikis.forEach((wiki) => { %>
             <% if(wiki.private === true && wiki.userId === currentUser.id) { %>
@@ -22,6 +17,9 @@
             <% } %>
             <% }) %>
         </ul>
+        <% if(currentUser && currentUser.role !== "standard") { %>
+            <a href="/wikis/new" class="btn btn-success">Create Private Wiki</a>
+            <% } %>
     </main>
     <% include ../static/partials/baseScripts.ejs %>
 </body>
