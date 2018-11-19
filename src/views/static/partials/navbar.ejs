@@ -13,16 +13,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="/wikis">Wikis</a>
+                <a class="nav-link" href="/wikis">Public</a>
                 </li>
             <% if(currentUser && currentUser.role != "standard") { %>
                 <li class="nav-item">
-                <a class="nav-link" href="/wikis/private">Private Wikis</a>
+                <a class="nav-link" href="/wikis/private">Private </a>
                 </li>
             <% }%>
             <% if(currentUser) { %>
                 <li class="nav-item">
-                    <a class="nav-link" href="/users/<%= currentUser.id %>/collaborations">Collabs</a>
+                    <a class="nav-link" href="/users/<%= currentUser.id %>/collaborations">Private Shares</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/users/<%= currentUser.id %>">Profile</a>

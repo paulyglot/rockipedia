@@ -5,10 +5,17 @@
 </head>
 <body>
     <% include ../static/partials/navbar.ejs %>
+    
     <main class="container">
-        <% include ../static/partials/messages.ejs %>
+        <h2 class="page-header">Public wikis</h2>
         <% if(!currentUser) { %>
-        <% } %>
+            <small>Please sign up or sign in to create your own wiki topic. </small>
+            <br>
+            <a href="/users/signup" class="btn btn-primary" id="signup-button">Sign Up</a>
+            <% } %>
+            <% include ../static/partials/messages.ejs %>
+            <% if(!currentUser) { %>
+            <% } %>
         <ul class="list-group">
             <% wikis.forEach((wiki) => { %>
             <% if(wiki.private === false) { %>
@@ -19,12 +26,11 @@
             <% } %>
             <% }) %>
         </ul>
-        <% if(!currentUser) { %>
-            <small>Please sign up or sign in to create your own wiki topic. </small>
-            <% } %>
-        <% if(currentUser) { %>
-            <a href="/wikis/new" class="btn btn-success">add new wiki</a>
-            <% } %>
+        <section>
+            <% if(currentUser) { %>
+                <a href="/wikis/new" class="btn btn-success">create new wiki</a>
+                <% } %>
+        </section>
     </main>
 </body>
 </html>

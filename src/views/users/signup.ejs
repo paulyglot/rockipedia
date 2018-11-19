@@ -7,7 +7,7 @@
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
         <% include ../static/partials/messages.ejs %>
-        <h1>Sign up</h1>
+        <h2 class="page-header">Sign up</h2>
         <form action="/users" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
@@ -28,7 +28,7 @@
                 <input type="password" class="form-control" name="passwordConfirmation" aria-describedby="passwordHelp"
                     placeholder="Enter password confirmation">
             </div>
-            <button type="submit" class="btn btn-primary">Sign up</button>
+            <button type="submit" class="btn btn-primary" id="signup-button">Sign up</button>
         </form>
     </main>
     <% include ../static/partials/baseScripts.ejs %>
