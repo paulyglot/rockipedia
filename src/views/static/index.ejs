@@ -8,7 +8,7 @@
     <main class="container">
         <header class="jumbotron my-5">
             <h1 class="display-3">Welcome to Rockipedia</h1>
-            <p class="lead">A global application for rock climbers to create and edit climbing wikis</p>
+            <p class="lead">Wikis for the global climbing community</p>
         </header>
         <section class="row text-center">
             <section class="col-lg-4">
@@ -20,14 +20,14 @@
             </section>
             <section class="col-lg-4">
                 <h4 class="card-title">Get Collaborative</h4>
-                <p class="card-text">Share with all climbing skill levels</p>
+                <p class="card-text">Share with all climbers around the world</p>
             <% if(currentUser) { %>
             <a href="/users/<%= currentUser.id %>/collaborations" class="btn btn-primary">See Collaborations</a>
             <% } %>
             </section>
             <section class="col-lg-4">
                 <h4 class="card-title">Create Private Wikis</h4>
-                <p class="card-text">Go Premium to edit private wikis</p>
+                <p class="card-text">Go Premium to add private climbing crags</p>
         <% if(currentUser && currentUser.role != "standard") { %>
         <a href="/wikis/private" class="btn btn-primary">See Private Wikis</a>
         <% } %>

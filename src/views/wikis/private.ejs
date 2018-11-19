@@ -7,6 +7,9 @@
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
         <h2 class="page-header">Private wikis</h2>
+        <% if(currentUser && currentUser.role !== "standard") { %>
+            <a href="/wikis/new" class="btn btn-success">Create Wiki</a>
+            <% } %>
         <% include ../static/partials/messages.ejs %>
         <ul class="list-group">
             <% wikis.forEach((wiki) => { %>
@@ -18,9 +21,6 @@
             <% } %>
             <% }) %>
         </ul>
-        <% if(currentUser && currentUser.role !== "standard") { %>
-            <a href="/wikis/new" class="btn btn-success">Create Private Wiki</a>
-            <% } %>
     </main>
     <% include ../static/partials/baseScripts.ejs %>
 </body>

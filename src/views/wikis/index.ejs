@@ -7,6 +7,9 @@
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
         <h2 class="page-header">Public wikis</h2>
+        <% if(currentUser) { %>
+            <a href="/wikis/new" class="btn btn-success">Create Wiki</a>
+            <% } %>
         <% include ../static/partials/messages.ejs %>
         <% if(!currentUser) { %>
         <% } %>
@@ -21,10 +24,7 @@
             <% }) %>
         </ul>
         <% if(!currentUser) { %>
-            <small>Please sign up or sign in to create your own wiki topic. </small>
-            <% } %>
-        <% if(currentUser) { %>
-            <a href="/wikis/new" class="btn btn-success">add new wiki</a>
+            <small>Please sign up or sign in to create your own wiki topic</small>
             <% } %>
     </main>
 </body>

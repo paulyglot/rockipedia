@@ -6,7 +6,7 @@
 <body>
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
-        <h1>Edit Wiki</h1>
+            <h2 class="page-header">Edit Wiki</h2>
         <form action="/wikis/<%= wiki.id %>/update" method="post">
             <div class="form-group">
                 <label for="title">Wiki Title</label>
@@ -14,20 +14,19 @@
                     placeholder="Enter Title">
             </div>
             <div class="form-group">
-                <label for="body">Body</label>
-                <textarea rows="4" class="form-control" name="body" placeholder="Enter Body"><%= wiki.body %></textarea>
-            </div>
-                <% if(currentUser && (currentUser.role === "premium" || currentUser.role === 'admin') && wiki.userId === currentUser.id) { %>
-                <p>Change Public/Private?</p>
-                <div class="form-group">
                     <label for="private">Wiki Status</label>
                     <select class="form-control" name="private">
                         <option value="false">Public</option>
                         <option value="true">Private</option>
                     </select>
-                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="signup-button">Update</button>
+            <div class="form-group">
+                <label for="body">Body</label>
+                <textarea rows="12" class="form-control" name="body" placeholder="Enter Body"><%= wiki.body %></textarea>
+            </div>
+                <% if(currentUser && (currentUser.role === "premium" || currentUser.role === 'admin') && wiki.userId === currentUser.id) { %>
                 <% } %>
-            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </main>
     <% include ../static/partials/baseScripts.ejs %>

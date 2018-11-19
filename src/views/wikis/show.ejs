@@ -7,9 +7,7 @@
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
         <% include ../static/partials/messages.ejs %>
-        <h1>
-            <%- wiki.title %>
-        </h1>
+        <h2 class="page-header"><%- wiki.title %></h2>
         <% if(wiki.private) { %>
         <% if(currentUser.isPremium() || currentUser.isAdmin()) { %>
         <a href="/wikis/<%= wiki.id %>/edit" class="btn btn-warning">Edit Wiki</a>
@@ -17,7 +15,7 @@
         <% } else { %>
         <a href="/wikis/<%= wiki.id %>/edit" class="btn btn-warning">Edit Wiki</a>
         <% } %>
-        <% if(currentUser.isAdmin()) { %>
+        <% if(currentUser) { %>
         <form style="display:initial" action="/wikis/<%= wiki.id %>/destroy" method="post">
             <button type="submit" class="btn btn-danger">Delete wiki</button>
         </form>
