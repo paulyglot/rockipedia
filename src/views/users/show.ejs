@@ -7,9 +7,8 @@
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
         <% include ../static/partials/messages.ejs %>
-        <h1 class="profile-header">
-            Hello <%= `${currentUser.name}!` %>
-        </h1>
+        <h2 class="page-header">Hello <%= `${currentUser.name}!` %>
+        </h2>
         <h5>
             <%= `Your email: ${currentUser.email}` %>
         </h5>
@@ -27,7 +26,7 @@
         </form>
         <% } else { %>
         <% if(currentUser.role == "premium"); { %>
-        <h2 class="downgrade">Need to Downgrade?</h2>
+        <h4 class="downgrade">Need to Downgrade?</h4>
         <form action="/users/<%=currentUser.id%>/downgrade" method="POST">
             <button type="submit" class="btn btn-danger">Downgrade your membership</button>
         </form>
